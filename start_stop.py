@@ -11,7 +11,7 @@ auth = {"aws_access_key_id": "ASIAZJFHE4UKWZRRW4KK", "aws_secret_access_key": "U
 def main():
         
     action = sys.argv[1] 
-    names = sys.argv[2]
+    instance_id = sys.argv[2]
     region = sys.argv[3]
         
         
@@ -33,14 +33,14 @@ def startInstance():
     print("====================")
 
     try:
-        ec2 = boto.ec2.connect_to_region("us-east-1", auth)
+        ec2 = boto.ec2.connect_to_region(region)
 
     except:
         print("Error 1")
 
       
     try:
-        ec2.start_instances(instance_ids="i-0981cc07a384e03a0")
+        ec2.start_instances(instance_ids=instance_id)
 
     except:
         print("Error 2")
@@ -52,14 +52,14 @@ def stopInstance():
     print("====================")
         
     try:
-        ec2 = boto.ec2.connect_to_region("us-east-1", auth)
+        ec2 = boto.ec2.connect_to_region(region)
         
     except:
         print("Error 3")
     
     
     try:
-        ec2.stop_instances(instance_ids="i-0981cc07a384e03a0")
+        ec2.stop_instances(instance_ids=instance_id)
         
     except:
         print("Error 4")
