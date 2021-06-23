@@ -7,7 +7,7 @@ ec2 = boto3.client('ec2')
 #instances = ['i-0981cc07a384e03a0']
 action = sys.argv[1] 
 instances = [sys.argv[2]]
-region = sys.argv[3]
+#region = sys.argv[3]
 
 def main():
         
@@ -19,8 +19,12 @@ def main():
         
         startInstance()
         
+    elif action == "list":
+    
+        listInstances()
+        
     else:
-        print("Choose start or stop")
+        print("Choose start, stop or list")
         
         
 def startInstance():
@@ -30,6 +34,12 @@ def startInstance():
 def stopInstance():
     ec2.stop_instances(InstanceIds=instances)
     print('stopping...')
+    
+def listInstances():
+    response = ec2.describe_instances()
+    for reservation in response["Reservations"]:
+        for instance in reservation["Instances"]:
+            print(instance["InstanceId"])
     
 if __name__ == '__main__':
     main()     
