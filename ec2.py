@@ -3,15 +3,13 @@ import sys
 
 
 ec2 = boto3.client('ec2')
-instances = ['i-0981cc07a384e03a0']
-region = 'us-east-1'
+
+#instances = ['i-0981cc07a384e03a0']
+action = sys.argv[1] 
+instances = [sys.argv[2]]
+region = sys.argv[3]
 
 def main():
-        
-    action = sys.argv[1] 
-    # instance_id = sys.argv[2]
-    # region = sys.argv[3]
-        
         
     if action == "stop":
                 
