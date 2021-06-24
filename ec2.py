@@ -38,6 +38,8 @@ def listInstances():
     for reservation in response["Reservations"]:
         for instance in reservation["Instances"]:
             print(instance["InstanceId"])
+            print(instance["Tags"])
+            print(instance["Placement"])
             print(instance["State"])
             print("====================")
        
