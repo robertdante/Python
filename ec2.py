@@ -16,7 +16,7 @@ def main():
     elif action == "list":
         listInstances()
     else:
-        print("Choose start + id, stop + or list")
+        print("Choose start + instanceId, stop + instanceId or list")
         
         
 def startInstance():
